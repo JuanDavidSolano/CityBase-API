@@ -14,7 +14,6 @@ router.route('/getLicenses').get(protectedRoutes, controller.getLicenses);
 router.route('/getProperties').get(protectedRoutes, controller.getProperties);
 router.route('/getMedicalHistory').get(protectedRoutes, controller.getMedicalHistory);
 router.route('/getCriminalHistory').get(protectedRoutes, controller.getCriminalHistory);
-//router.route('/getOrganization').get(protectedRoutes, controller.getOrganization);
 
 // POSTS - PROTECTED ROUTES
 
