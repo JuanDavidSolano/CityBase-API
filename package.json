@@ -1,0 +1,35 @@
+{
+	"name": "floridarp-api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "cross-env NODE_ENV=development nodemon"
+	},
+	"author": "JuanSolanoS",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^3.0.7",
+		"bcryptjs": "^2.4.3",
+		"body-parser": "^1.19.0",
+		"chalk": "^2.4.2",
+		"config": "^3.2.2",
+		"cors": "^2.8.5",
+		"cross-env": "^5.2.0",
+		"dotenv": "^8.0.0",
+		"express": "^4.17.1",
+		"express-validator": "^6.1.1",
+		"gravatar": "^1.8.0",
+		"jsonwebtoken": "^8.5.1",
+		"moment": "^2.24.0",
+		"mongoose": "^5.6.6",
+		"passport": "^0.4.0",
+		"passport-http": "^0.3.0",
+		"passport-jwt": "^4.0.0",
+		"winston": "^3.2.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.4"
+	}
+}
