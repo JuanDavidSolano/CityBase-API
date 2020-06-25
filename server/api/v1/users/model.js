@@ -34,6 +34,7 @@ const fields = {
 		type: Schema.Types.ObjectId,
 		ref: 'organization',
 	},
+	// ALL LICENSES THAT USER OWNS
 	licenses: [
 		{
 			type: Schema.Types.ObjectId,
@@ -48,12 +49,14 @@ const fields = {
 		type: Schema.Types.ObjectId,
 		ref: 'criminalHistory',
 	},
+	// ALL PROPERTIES THAT USER OWNS
 	properties: [
 		{
 			type: Schema.Types.ObjectId,
 			ref: 'propertie',
 		},
 	],
+	// TRUE IF WANTED
 	wanted: {
 		type: Boolean,
 		default: false,
@@ -66,10 +69,12 @@ const fields = {
 		type: Boolean,
 		default: false,
 	},
+	// TRUE IF DECEASED
 	deceased: {
 		type: Boolean,
 		default: false,
 	},
+	// ALL INSURANCES THAT USER OWNS
 	insurances: [
 		{
 			type: Schema.Types.ObjectId,
