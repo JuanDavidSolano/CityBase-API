@@ -16,8 +16,6 @@ connectDB();
 // Inicializacion de aplicacion express
 const app = express();
 
-app.set('key', config.key.key);
-
 app.use(cors());
 
 app.use(bodyParser.json());

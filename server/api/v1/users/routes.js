@@ -1,4 +1,7 @@
 const router = require('express').Router();
+
+const protectedRoutes = require('../../../utils/protectedRoutes');
+
 const controller = require('./controller');
 
 router.route('/signup').post(controller.signup);
