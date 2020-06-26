@@ -81,6 +81,12 @@ const fields = {
 			ref: 'insurance',
 		},
 	],
+	vehicles: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'vehicle',
+		},
+	],
 };
 
 const user = new Schema(fields, { timestamps: true });
