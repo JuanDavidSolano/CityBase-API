@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const chalk = require('chalk');
 
 const { Schema } = mongoose;
 
@@ -8,6 +6,10 @@ const fields = {
 	owner: {
 		type: Schema.Types.ObjectId,
 		ref: 'user',
+		required: true,
+	},
+	name: {
+		type: String,
 		required: true,
 	},
 	plate: {
@@ -22,11 +24,15 @@ const fields = {
 		type: Schema.Types.ObjectId,
 		res: 'insurance',
 	},
+	insured: {
+		type: Boolean,
+		default: false,
+	},
 };
 
-const complaint = new Schema(fields, { timestamps: true });
+const vehicle = new Schema(fields, { timestamps: true });
 
 module.exports = {
-	Model: mongoose.model('complaint', complaint),
+	Model: mongoose.model('vehicle', vehicle),
 	fields,
 };
