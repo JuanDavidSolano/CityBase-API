@@ -10,6 +10,7 @@ router.route('/create').post(protectedRoutes, controller.create);
 router.route('/update').put(protectedRoutes, controller.update);
 
 // GETS - PROTECTED ROUTES
+router.route('/getAll').get(protectedRoutes, controller.getAll);
 
 // DELETES - PROTECTED ROUTES
 router.route('/delete').delete(protectedRoutes, controller.delete);

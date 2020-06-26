@@ -86,3 +86,33 @@ exports.delete = async (req, res, next) => {
 		});
 	}
 };
+
+// GET VEHICLE
+exports.getVehicle = async (req, res, next) => {
+	const vehicleId = req.query.vehicleId;
+
+	const vehicle = await Model.findById(vehicleId).populate('owner', 'name lastname wanted deceased');
+
+	if (vehicle) {
+		res.send(vehicle);
+	} else {
+		res.json({
+			error: true,
+			msg: 'Error getting the vehicle',
+		});
+	}
+};
+
+// GET ALL VEHICLES
+exports.getAll = async (req, res, next) => {
+	const vehicles = await Model.find();
+
+	if (vehicles) {
+		res.send(vehicles);
+	} else {
+		res.json({
+			error: true,
+			msg: 'Error getting all vehicles',
+		});
+	}
+};
