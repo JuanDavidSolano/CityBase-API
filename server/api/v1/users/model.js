@@ -81,6 +81,7 @@ const fields = {
 			ref: 'insurance',
 		},
 	],
+	// ALL VEHICLES THAT USER OWNS
 	vehicles: [
 		{
 			type: Schema.Types.ObjectId,

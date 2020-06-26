@@ -12,6 +12,7 @@ router.route('/login').post(controller.login);
 router.route('/getInsurances').get(protectedRoutes, controller.getInsurances);
 router.route('/getLicenses').get(protectedRoutes, controller.getLicenses);
 router.route('/getProperties').get(protectedRoutes, controller.getProperties);
+router.route('/getVehicles').get(protectedRoutes, controller.getVehicles);
 router.route('/getMedicalHistory').get(protectedRoutes, controller.getMedicalHistory);
 router.route('/getCriminalHistory').get(protectedRoutes, controller.getCriminalHistory);
 
@@ -20,13 +21,8 @@ router.route('/getCriminalHistory').get(protectedRoutes, controller.getCriminalH
 // PUTS - PROTECTED ROUTES
 router.route('/update').put(protectedRoutes, controller.update);
 router.route('/setOrganization').put(protectedRoutes, controller.setOrganization);
-router.route('/setMedicalHistory').put(protectedRoutes, controller.setMedicalHistory);
-router.route('/setCriminalHistory').put(protectedRoutes, controller.setCriminalHistory);
 router.route('/setHistoryAccess').put(protectedRoutes, controller.setHistoryAccess);
 router.route('/setWanted').put(protectedRoutes, controller.setWanted);
 router.route('/setDeceased').put(protectedRoutes, controller.setDeceased);
-router.route('/setProperties').put(protectedRoutes, controller.setProperties);
-router.route('/setLicenses').put(protectedRoutes, controller.setLicenses);
-router.route('/setInsurances').put(protectedRoutes, controller.setInsurances);
 
 module.exports = router;

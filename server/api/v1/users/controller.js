@@ -82,7 +82,7 @@ exports.login = async (req, res, next) => {
 exports.getInsurances = async (req, res, next) => {
 	const username = req.query.username;
 
-	const user = await Model.findOne({ username: username }).select('insurances');
+	const user = await Model.findOne({ username: username }).select('insurances').populate('insurances');
 
 	if (user) {
 		res.json(user);
@@ -95,7 +95,7 @@ exports.getInsurances = async (req, res, next) => {
 exports.getLicenses = async (req, res, next) => {
 	const username = req.query.username;
 
-	const user = await Model.findOne({ username: username }).select('licenses');
+	const user = await Model.findOne({ username: username }).select('licenses').populate('licenses');
 
 	if (user) {
 		res.json(user);
@@ -108,7 +108,20 @@ exports.getLicenses = async (req, res, next) => {
 exports.getProperties = async (req, res, next) => {
 	const username = req.query.username;
 
-	const user = await Model.findOne({ username: username }).select('properties');
+	const user = await Model.findOne({ username: username }).select('properties').populate('properties');
+
+	if (user) {
+		res.json(user);
+	} else {
+		res.send('User not found');
+	}
+};
+
+// GET PROPERTIES
+exports.getVehicles = async (req, res, next) => {
+	const username = req.query.username;
+
+	const user = await Model.findOne({ username: username }).select('vehicles').populate('vehicles');
 
 	if (user) {
 		res.json(user);
@@ -121,7 +134,7 @@ exports.getProperties = async (req, res, next) => {
 exports.getMedicalHistory = async (req, res, next) => {
 	const username = req.query.username;
 
-	const user = await Model.findOne({ username: username }).select('medicalHistory');
+	const user = await Model.findOne({ username: username }).select('medicalHistory').populate('medicalHistory');
 
 	if (user) {
 		res.json(user);
@@ -134,7 +147,7 @@ exports.getMedicalHistory = async (req, res, next) => {
 exports.getCriminalHistory = async (req, res, next) => {
 	const username = req.query.username;
 
-	const user = await Model.findOne({ username: username }).select('criminalHistory');
+	const user = await Model.findOne({ username: username }).select('criminalHistory').populate('criminalHistory');
 
 	if (user) {
 		res.json(user);
@@ -191,7 +204,7 @@ exports.update = async (req, res, next) => {
 	}
 };
 
-// PUT/SET ORGANIZATION
+// SET ORGANIZATION
 exports.setOrganization = async (req, res, next) => {
 	const username = req.body.username;
 	const organizationId = req.body.organizationId;
@@ -226,52 +239,6 @@ exports.setOrganization = async (req, res, next) => {
 		res.json({
 			updated: false,
 			msg: 'Error updating user organization or role',
-		});
-	}
-};
-
-// SET MEDICAL HISTORY
-exports.setMedicalHistory = async (req, res, next) => {
-	const username = req.body.username;
-	const medicalHistoryId = req.body.medicalHistoryId;
-
-	const user = await Model.findOneAndUpdate(
-		{ username: username },
-		{ $set: { medicalHistory: medicalHistoryId } },
-		{ new: true }
-	);
-	if (user) {
-		res.json({
-			updated: true,
-			user,
-		});
-	} else {
-		res.json({
-			updated: false,
-			msg: 'Error setting the user Medical History',
-		});
-	}
-};
-
-// SET CRIMINAL HISTORY
-exports.setCriminalHistory = async (req, res, next) => {
-	const username = req.body.username;
-	const criminalHistoryId = req.body.criminalHistoryId;
-
-	const user = await Model.findOneAndUpdate(
-		{ username: username },
-		{ $set: { criminalHistory: criminalHistoryId } },
-		{ new: true }
-	);
-	if (user) {
-		res.json({
-			updated: true,
-			user,
-		});
-	} else {
-		res.json({
-			updated: false,
-			msg: 'Error setting the user Criminal History',
 		});
 	}
 };
@@ -380,75 +347,6 @@ exports.setWanted = async (req, res, next) => {
 		res.json({
 			updated: false,
 			msg: 'Error updating user wanted status',
-		});
-	}
-};
-
-// SET PROPERTIES
-exports.setProperties = async (req, res, next) => {
-	const username = req.body.username;
-	const propertyId = req.body.propertyId;
-
-	const user = await Model.findOneAndUpdate(
-		{ username: username },
-		{ $push: { properties: propertyId } },
-		{ new: true }
-	);
-	if (user) {
-		res.json({
-			updated: true,
-			user,
-		});
-	} else {
-		res.json({
-			updated: false,
-			msg: 'Error setting the user properties',
-		});
-	}
-};
-
-// SET LICENSES
-exports.setLicenses = async (req, res, next) => {
-	const username = req.body.username;
-	const licenseId = req.body.licenseId;
-
-	const user = await Model.findOneAndUpdate(
-		{ username: username },
-		{ $push: { licenses: licenseId } },
-		{ new: true }
-	);
-	if (user) {
-		res.json({
-			updated: true,
-			user,
-		});
-	} else {
-		res.json({
-			updated: false,
-			msg: 'Error setting the user licenses',
-		});
-	}
-};
-
-// SET INSURANCES
-exports.setInsurances = async (req, res, next) => {
-	const username = req.body.username;
-	const insuranceId = req.body.insuranceId;
-
-	const user = await Model.findOneAndUpdate(
-		{ username: username },
-		{ $push: { insurances: insuranceId } },
-		{ new: true }
-	);
-	if (user) {
-		res.json({
-			updated: true,
-			user,
-		});
-	} else {
-		res.json({
-			updated: false,
-			msg: 'Error setting the user insurances',
 		});
 	}
 };
