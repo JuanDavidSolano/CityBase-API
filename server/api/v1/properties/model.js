@@ -21,6 +21,7 @@ const fields = {
 	// TOTAL PRICE
 	price: {
 		type: Number,
+		required: true,
 	},
 	// DATE OF THE LAST PAY
 	lastPayDate: {
